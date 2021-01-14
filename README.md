@@ -52,19 +52,46 @@ I worked with 2 datasets:
 
 
 ## Models
-### Baseline model - average rating adjusted by user/book deviation
-Baseline estimate for r_xi = u + b_x + b_i
+### Content Based Recommender
 
-u: global mean (overall mean book ratings)
-b_x: rating deviation of user x = (avg. rating of user x) - u
-b_i: rating deviation of book i = (avg. rating of book i) - u
 
-### Collaborative filtering model - matrix factorization
+1. Used the following features to recommend songs:
 
-By using embedding, we can uncover the latent features for both users and books and predict the rate by a given user to a given book. We used embeddings rather than the method of singular value decomposition (SVD). Since SVD is based on the rating matrix's eighenvalues and eighen vectors, which is computationally expensive. Using embeddings with sparse tensor and the optimation method of alternative least squares will improve the computation efficiency. 
+* Valence
+* Acousticness
+* Danceability
+* Energy
+* Loudness
+* Tempo
+
+2. Used cosine similarity as similarity measure.
+
+3. Sample of recommended songs:
+
 <p align="center">
-  <image src=visualization/CF_embedding.png />
+  <image src=img/Blinding_Lights_Recos.png>
 </p>
+  
+
+<p align="center">
+  <image src=img/Bad_Romance_Recos.png>
+</p>
+  
+4. The songs definetly had similary feature scores. However, the list of songs recommended does not immediately stand out as being similar to the input song. I had to listen to them to realize they actually are similar.
+  
+  
+### Collaborative Filtering Recommender
+
+1. Used Surprise python library (http://surpriselib.com/) to cross validate different collaborative filtering methods.
+
+2. Using the cleaned up dataset with trimmed down users and tracks and pseudo-ratings calculated based on # of times a particular song appeared on a particular user's playlists, I fit the data into different algorithms. I used Root Mean Squared Error (RMSE) to evaluate.
+
+<p align="center">
+  <image src=img/Blinding_Lights_Recos.png>
+</p>
+
+
+
 
 ## Future work
 * Incorporate more content features
