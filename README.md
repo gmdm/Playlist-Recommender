@@ -87,13 +87,11 @@ I worked with 2 datasets:
 2. Using the cleaned up dataset with trimmed down users and tracks and pseudo-ratings calculated based on # of times a particular song appeared on a particular user's playlists, I fit the data into different algorithms. I used Root Mean Squared Error (RMSE) to evaluate.
 
 <p align="center">
-  <image src=img/Blinding_Lights_Recos.png>
+  <image src=img/Collab_Filtering_Results.png>
 </p>
 
 
-
-
 ## Future work
-* Incorporate more content features
-* More hyper parameter tuning
-* More hidden layers in neural networks
+* Incorporate more content features by getting more data from Spotify's API
+* Fine tune models by adjusting hyperparameters
+* Increase data to get better recommendations (with the help of AWS for more computing power)
